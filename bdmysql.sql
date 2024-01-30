@@ -37,6 +37,7 @@ CREATE TABLE usuario (
 
 CREATE TABLE psi_candidato (
     cand_id INT AUTO_INCREMENT PRIMARY KEY,
+    cand_dpi  BIGINT UNIQUE,
     cand_primer_nombre VARCHAR(50),
     cand_segundo_nombre VARCHAR(50),
     cand_primer_apellido VARCHAR(50),
@@ -47,7 +48,7 @@ CREATE TABLE psi_candidato (
     cand_fecha_evaluacion_terminada DATE,
     cand_time TIME,
     cand_centro VARCHAR(15) DEFAULT 'ETMA',
-    cand_estado varchar(250)
+    cand_estado varchar(250),
     cand_conclusion VARCHAR(30) DEFAULT 'PENDIENTE',
     cand_test_id INT,
     cand_situacion SMALLINT DEFAULT 1,

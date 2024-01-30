@@ -19,6 +19,8 @@ class CandidatoController
 
     public static function guardarApi()
     {
+        // echo json_encode($_POST);
+        // exit;
         try {
             if (isset($_POST['cand_fecha_nacimiento'])) {
                 $_POST['cand_fecha_nacimiento'] = date('Y-m-d', strtotime($_POST['cand_fecha_nacimiento']));
@@ -27,7 +29,7 @@ class CandidatoController
             $candidato = new Candidato($_POST);
             $resultado = $candidato->crear();
           
-    
+   
             if ($resultado['resultado'] == 1) {
                 $new_cand_id = $resultado['id']; 
     
@@ -116,6 +118,9 @@ class CandidatoController
     public static function guardar_con_testAPI()
     {
         try {
+
+
+            
             $nuevoCandidatoID = $_POST['nuevoCandidatoID'];          
             $test_id = $_POST['cand_test_id'];
             

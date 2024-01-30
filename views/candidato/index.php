@@ -71,10 +71,14 @@
                 <label for="cand_fecha_nacimiento">Fecha de Nacimiento</label>
                 <input type="date" name="cand_fecha_nacimiento" id="cand_fecha_nacimiento" class="form-control">
             </div>
+            <div class="col">
+                    <label for="cand_fecha_nacimiento">DPI</label>
+                    <input type="number" name="cand_dpi" id="cand_dpi" class="form-control" required>
+                </div>
         </div>        
         <div class="row mb-3">
             <div class="col">
-                <button type="submit" form="formularioCandidato" id="btnGuardar" data-saludo="hola" data-saludo2="hola2" class="btn btn-primary w-100">Guardar</button>
+                <button type="submit" id="registrar" name="registrar" form="formularioCandidato" id="btnGuardar" data-saludo="hola" data-saludo2="hola2" class="btn btn-primary w-100">Guardar</button>
             </div>
         </div>
     </form>

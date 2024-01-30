@@ -8,7 +8,15 @@ const formulario = document.getElementById('formularioCandidato');
 const btnGuardar = document.getElementById('btnGuardar');
 const divTabla = document.getElementById('tablaCandidato');
 const btnConfirmarTest = document.getElementById('btnConfirmarTest');
+const cuiInput = document.getElementById('cand_dpi');
+const reg = document.getElementById('registrar');
 const modalSeleccionarTest = new bootstrap.Modal(document.getElementById('modalSeleccionarTest'));
+
+
+function iniciar_app() {
+
+    reg.setAttribute('disabled', 'true');
+}
 
 
 let contador = 1;
@@ -355,7 +363,71 @@ const confirmarTest = () => {
 };
 
 
+function cuiIsValid(cui) {
+    if (!cui) {
+        return false;
+    }
 
+    var cuiRegExp = /^[0-9]{4}\s?[0-9]{5}\s?[0-9]{4}$/;
+
+    if (!cuiRegExp.test(cui)) {
+        return false;
+    }
+
+    cui = cui.replace(/\s/g, '');
+    var depto = parseInt(cui.substring(9, 11), 10);
+    var muni = parseInt(cui.substring(11, 13));
+    var numero = cui.substring(0, 8);
+    var verificador = parseInt(cui.substring(8, 9));
+
+    var munisPorDepto = [
+        17, 8, 16, 16, 13, 14, 19, 8, 24, 21, 9, 30, 32, 21, 8, 17, 14, 5, 11, 11, 7, 17
+    ];
+
+    if (depto === 0 || muni === 0 || depto > munisPorDepto.length || muni > munisPorDepto[depto - 1]) {
+        return false;
+    }
+
+    var total = 0;
+    for (var i = 0; i < numero.length; i++) {
+        total += numero[i] * (i + 2);
+    }
+
+    var modulo = (total % 11);
+
+    return modulo === verificador;
+}
+
+
+cuiInput.addEventListener('change', function (e) {
+    var inputValue = this.value;
+
+    // Limpiar el valor eliminando caracteres no permitidos
+    var cleanedValue = inputValue.replace(/[^0-9\s]/g, '');
+
+    // Actualizar el valor del input con el valor limpio
+    this.value = cleanedValue;
+
+    if (cuiIsValid(cleanedValue)) {
+        // Mostrar toast indicando que el CUI es válido
+        Toast.fire({
+            icon: 'success',
+            title: 'CUI válido'
+        });
+        reg.removeAttribute('disabled');
+
+    } else {
+        // Mostrar toast indicando que el CUI no es válido
+        Toast.fire({
+            icon: 'error',
+            title: 'CUI no válido'
+        });
+        this.value = '';
+    }
+});
+
+
+iniciar_app()
 
 buscar();
 formulario.addEventListener('submit', guardar)

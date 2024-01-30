@@ -56,6 +56,12 @@
             </div>
             <div class="row mb-3">
                 <div class="col">
+                    <label for="usu_password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="usu_password2" name="usu_password2" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
                     <label class="form-check-label" for="show_password">
                         <input type="checkbox" id="show_password">
                         Mostrar Contraseña
@@ -63,7 +69,7 @@
                 </div>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <button type="submit" id="registrar" name="registrar" class="btn btn-primary">Registrarse</button>
             </div>
         </form>
     </div>
