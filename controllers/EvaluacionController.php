@@ -52,7 +52,7 @@ class EvaluacionController
     public static function buscarEPQA(Router $router) {
         $sql = "SELECT 
         c.*, 
-        (current - c.cand_fecha_nacimiento)/365.25 AS edad,
+        (DATEDIFF(NOW(), c.cand_fecha_nacimiento) / 365.25) AS edad,
         COALESCE(r.Respondidas, 0) AS Respondidas,
         p.Total
     FROM 
@@ -68,7 +68,8 @@ class EvaluacionController
         (SELECT COUNT(*) AS Total FROM psi_preguntas_epqa WHERE pregunta_test_id = 1) p
     WHERE 
         c.cand_situacion = 1 
-        AND c.cand_test_id = 1;";
+        AND c.cand_test_id = 1;
+    ";
 
         try {
             $candidato = Evaluacion::fetchArray($sql);
@@ -85,7 +86,7 @@ class EvaluacionController
     public static function buscarIAC(Router $router) {
         $sql = "SELECT 
         c.*, 
-        (current - c.cand_fecha_nacimiento)/365.25 AS edad,
+        (DATEDIFF(NOW(), c.cand_fecha_nacimiento) / 365.25) AS edad,
         COALESCE(r.Respondidas, 0) AS Respondidas,
         p.Total
     FROM 
@@ -95,13 +96,14 @@ class EvaluacionController
             res_cand_id, 
             COUNT(*) AS Respondidas 
          FROM psi_respuestas 
-         WHERE res_test_id = 2
+         WHERE res_test_id = 2 
          GROUP BY res_cand_id) r ON c.cand_id = r.res_cand_id
     CROSS JOIN 
         (SELECT COUNT(*) AS Total FROM psi_preguntas_iac WHERE pregunta_test_id = 2) p
     WHERE 
         c.cand_situacion = 1 
-        AND c.cand_test_id = 2;";
+        AND c.cand_test_id = 2;
+    ";
 
         try {
             $candidato = Evaluacion::fetchArray($sql);

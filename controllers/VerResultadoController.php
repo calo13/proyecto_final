@@ -90,6 +90,8 @@ public static function buscarEPQA(Router $router) {
     ORDER BY r.res_cand_id, tipo_pregunta;";
 
     try {
+        echo json_encode($sql);
+        exit;
         $pruebas = VerResultado::fetchArray($sql, ['cand_id' => $nuevoCandidatoID]);
 
         echo json_encode($pruebas);

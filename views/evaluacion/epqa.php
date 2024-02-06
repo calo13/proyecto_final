@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 
 
   <style>
@@ -116,18 +117,20 @@
 
 <!-- para abrir los modals de respuestas y resultados -->
 <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="miModalLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="miModalLabel">Título del Modal</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-">
-        <iframe id="modalIframe" src="" style="width: 100%; height: 80vh;"></iframe>
+      <div class="modal-body">
+        <iframe id="modalIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
       </div>
     </div>
   </div>
 </div>
+
+
 
 <!-- Modal Concluciones -->
 <div class="modal fade" id="conclusionModal" tabindex="-1" aria-labelledby="conclusionModalLabel" aria-hidden="true">
@@ -159,5 +162,5 @@
 
 <script src="<?= asset('./build/js/evaluacion/epqa.js')  ?>"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>

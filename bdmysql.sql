@@ -10,17 +10,6 @@ CREATE TABLE psi_test (
     test_situacion SMALLINT DEFAULT 1
 );
 
--- CREATE TABLE usuario (
---     usu_id INT AUTO_INCREMENT PRIMARY KEY,
---     usu_nombre VARCHAR(50) UNIQUE,
---     usu_dpi INT UNIQUE,
---     usu_password VARCHAR(255),
---     usu_email VARCHAR(255) UNIQUE,
---     usu_telefono VARCHAR(15),
---     usu_rol INT,
---     usu_situacion SMALLINT DEFAULT 1,
---     FOREIGN KEY (usu_rol) REFERENCES rol(rol_id)
--- );
 
 CREATE TABLE usuario (
     usu_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -117,9 +106,10 @@ CREATE TABLE psi_baremos_iac (
 );
 
 INSERT INTO `psi_test` (`test_id`, `test_nombre`, `test_situacion`) VALUES
-(1, 'EPQ-A', 1),
-(2, 'IAC', 1),
+(1, 'IAC', 1),
+(2, 'EPQ-A', 1),
 (3, 'QAP', 1);
+
 
 
 INSERT INTO `rol` (`rol_id`, `rol_nombre`, `rol_situacion`) VALUES

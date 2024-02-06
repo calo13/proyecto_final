@@ -48,7 +48,7 @@ class RespuestaController {
     public static function guardarAPI(){
      
         try {
-           
+          
             $respuesta = new Respuesta($_POST);
             $resultado = $respuesta->crear();
 
