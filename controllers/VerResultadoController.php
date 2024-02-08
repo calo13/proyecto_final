@@ -8,26 +8,29 @@ use MVC\Router;
 
 class VerResultadoController
 {
-    public static function epqa(Router $router){
+    public static function epqa(Router $router)
+    {
         $router->render('verresultado/epqa', []);
     }
-    public static function iac(Router $router){
+    public static function iac(Router $router)
+    {
         $router->render('verresultado/iac', []);
     }
 
 
-public static function buscarEPQA(Router $router) {
-    $nuevoCandidatoID = $_GET['nuevoCandidatoID'];
+    public static function buscarEPQA(Router $router)
+    {
+        $nuevoCandidatoID = $_GET['nuevoCandidatoID'];
 
-    if (!$nuevoCandidatoID) {
-        echo json_encode([
-            'mensaje' => 'No se proporcionó un ID de candidato',
-            'codigo' => 0
-        ]);
-        return;
-    }
+        if (!$nuevoCandidatoID) {
+            echo json_encode([
+                'mensaje' => 'No se proporcionó un ID de candidato',
+                'codigo' => 0
+            ]);
+            return;
+        }
 
-    $sql = "WITH PuntuacionPorTipo AS (
+        $sql = "WITH PuntuacionPorTipo AS (
         SELECT
             r.res_cand_id,
             p.pregunta_tipo,
@@ -87,35 +90,35 @@ public static function buscarEPQA(Router $router) {
     INNER JOIN psi_candidato AS c ON r.res_cand_id = c.cand_id
     WHERE r.res_cand_id = $nuevoCandidatoID
     GROUP BY r.res_cand_id, percentiles
-    ORDER BY r.res_cand_id, tipo_pregunta;";
+    ORDER BY res_cand_id, tipo_pregunta;";
 
-    try {
-        echo json_encode($sql);
-        exit;
-        $pruebas = VerResultado::fetchArray($sql, ['cand_id' => $nuevoCandidatoID]);
+        try {
 
-        echo json_encode($pruebas);
-    } catch (Exception $e) {
-        echo json_encode([
-            'detalle' => $e->getMessage(),
-            'mensaje' => 'Ocurrió un error',
-            'codigo' => 0
-        ]);
-    }
-}
+            $pruebas = VerResultado::fetchArray($sql, ['cand_id' => $nuevoCandidatoID]);
 
-public static function buscarIAC(Router $router) {
-    $nuevoCandidatoID = $_GET['nuevoCandidatoID'];
-
-    if (!$nuevoCandidatoID) {
-        echo json_encode([
-            'mensaje' => 'No se proporcionó un ID de candidato',
-            'codigo' => 0
-        ]);
-        return;
+            echo json_encode($pruebas);
+        } catch (Exception $e) {
+            echo json_encode([
+                'detalle' => $e->getMessage(),
+                'mensaje' => 'Ocurrió un error',
+                'codigo' => 0
+            ]);
+        }
     }
 
-    $sql = "WITH PuntuacionPorTipo AS (
+    public static function buscarIAC(Router $router)
+    {
+        $nuevoCandidatoID = $_GET['nuevoCandidatoID'];
+
+        if (!$nuevoCandidatoID) {
+            echo json_encode([
+                'mensaje' => 'No se proporcionó un ID de candidato',
+                'codigo' => 0
+            ]);
+            return;
+        }
+
+        $sql = "WITH PuntuacionPorTipo AS (
         SELECT
             r.res_cand_id,
             p.pregunta_tipo,
@@ -147,18 +150,18 @@ public static function buscarIAC(Router $router) {
     ORDER BY r.res_cand_id, tipo_pregunta;
     ";
 
-    try {
-        $pruebas = VerResultado::fetchArray($sql, ['cand_id' => $nuevoCandidatoID]);
+        try {
+            $pruebas = VerResultado::fetchArray($sql, ['cand_id' => $nuevoCandidatoID]);
 
-        echo json_encode($pruebas);
-    } catch (Exception $e) {
-        echo json_encode([
-            'detalle' => $e->getMessage(),
-            'mensaje' => 'Ocurrió un error',
-            'codigo' => 0
-        ]);
+            echo json_encode($pruebas);
+        } catch (Exception $e) {
+            echo json_encode([
+                'detalle' => $e->getMessage(),
+                'mensaje' => 'Ocurrió un error',
+                'codigo' => 0
+            ]);
+        }
     }
-}
 
 }
 

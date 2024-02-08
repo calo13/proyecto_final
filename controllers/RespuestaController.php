@@ -108,10 +108,12 @@ public static function buscarEPQA(Router $router) {
 }
 
 public static function buscarIAC(Router $router) {
-    $sql = "SELECT p.pregunta_id, t.test_nombre, p.pregunta_pregunta, p.pregunta_tipo, p.pregunta_respuesta, p.pregunta_situacion
-    FROM psi_preguntas_iac p
-    JOIN psi_test t ON p.pregunta_test_id = t.test_id
-    WHERE p.pregunta_test_id = 2;";
+ echo json_encode('si');
+ exit;
+    // $sql = "SELECT p.pregunta_id, t.test_nombre, p.pregunta_pregunta, p.pregunta_tipo, p.pregunta_respuesta, p.pregunta_situacion
+    // FROM psi_preguntas_iac p
+    // JOIN psi_test t ON p.pregunta_test_id = t.test_id
+    // WHERE p.pregunta_test_id = 2;";
 
     try {
         $pruebas = Respuesta::fetchArray($sql);

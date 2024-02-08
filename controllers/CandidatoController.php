@@ -19,14 +19,14 @@ class CandidatoController
 
     public static function guardarApi()
     {
-        // echo json_encode($_POST);
-        // exit;
+      
         try {
             if (isset($_POST['cand_fecha_nacimiento'])) {
                 $_POST['cand_fecha_nacimiento'] = date('Y-m-d', strtotime($_POST['cand_fecha_nacimiento']));
             }
     
             $candidato = new Candidato($_POST);
+          
             $resultado = $candidato->crear();
           
    

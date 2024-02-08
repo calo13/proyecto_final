@@ -106,8 +106,8 @@ CREATE TABLE psi_baremos_iac (
 );
 
 INSERT INTO `psi_test` (`test_id`, `test_nombre`, `test_situacion`) VALUES
+(2, 'EPQ-A', 2),
 (1, 'IAC', 1),
-(2, 'EPQ-A', 1),
 (3, 'QAP', 1);
 
 

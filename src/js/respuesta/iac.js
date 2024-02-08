@@ -107,6 +107,7 @@ const datatable = new Datatable('#tablaRespuesta', {
 });
 
 const buscarIAC = async () => {
+    console.log('chj')
     const url = `/proyecto_final/API/respuesta/buscar/iac`;
     const config = {
         method: 'GET',
