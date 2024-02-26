@@ -73,9 +73,8 @@ CREATE TABLE psi_respuestas (
     res_pregunta_id INT,
     res_respuesta INT,
     res_situacion SMALLINT DEFAULT 1,
-    FOREIGN KEY (res_cand_id) REFERENCES psi_candidato(cand_id),
-    FOREIGN KEY (res_test_id) REFERENCES psi_test(test_id),
-    FOREIGN KEY (res_pregunta_id) REFERENCES psi_preguntas_epqa(pregunta_id) -- O psi_preguntas_iac dependiendo de la tabla de origen
+    FOREIGN KEY (res_test_id) REFERENCES psi_test(test_id)
+
 );
 
 CREATE TABLE psi_baremos_epqa (
@@ -106,8 +105,8 @@ CREATE TABLE psi_baremos_iac (
 );
 
 INSERT INTO `psi_test` (`test_id`, `test_nombre`, `test_situacion`) VALUES
-(2, 'EPQ-A', 2),
-(1, 'IAC', 1),
+(1, 'EPQ-A', 1),
+(2, 'IAC', 1),
 (3, 'QAP', 1);
 
 

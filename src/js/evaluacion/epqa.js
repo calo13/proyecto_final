@@ -11,6 +11,7 @@ let contador = 1;
 const datatable = new Datatable('#tablaCandidato', {
     language : lenguaje,
     data : null,
+    
     columns: [
         {
             className: 'text-center',
@@ -45,7 +46,8 @@ const datatable = new Datatable('#tablaCandidato', {
             title: 'No. Pregunta',
             data: null,
             render: function(data, type, row) {
-                return row.respondidas + '/' + row.total;
+                console.log(data)
+                return row.Respondidas + '/' + row.Total;
             }
         },
         {
